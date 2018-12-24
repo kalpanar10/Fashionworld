@@ -19,7 +19,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>online-shopping  - ${title}</title>
+    <title>online-shopping - ${title}</title>
 <script>
 window.menu ='{title}';
 </script>
