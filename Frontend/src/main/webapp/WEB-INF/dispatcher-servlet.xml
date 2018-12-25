@@ -10,6 +10,10 @@
    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<context:component-scan	base-package="controller"></context:component-scan>
+	<context:component-scan	base-package="config"></context:component-scan>
+	<context:component-scan	base-package="dao"></context:component-scan>
+	<context:component-scan	base-package="daoimpl"></context:component-scan>
+	<context:component-scan	base-package="dto"></context:component-scan>
 	
 	<bean id="viewResolver"	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
