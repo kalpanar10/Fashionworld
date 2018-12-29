@@ -9,7 +9,9 @@
     http://www.springframework.org/schema/mvc
    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<context:component-scan	base-package="controller"></context:component-scan>
+	<context:component-scan	base-package="com.niit.controller"></context:component-scan>
+		<context:component-scan	base-package="com.niit.Exception"></context:component-scan>
+	
 	<context:component-scan	base-package="config"></context:component-scan>
 	<context:component-scan	base-package="dao"></context:component-scan>
 	<context:component-scan	base-package="daoimpl"></context:component-scan>
@@ -19,7 +21,7 @@
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>
 	<!-- Loading static resources -->
 	<mvc:annotation-driven />
 	
