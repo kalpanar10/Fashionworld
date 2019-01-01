@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @ComponentScan(basePackages= {"dto"})
+
+
 @EnableTransactionManagement
 public class HibernateConfig {
 	
@@ -47,6 +49,8 @@ public class HibernateConfig {
 		
 		builder.addProperties(getHibernateProperties());
 		builder.scanPackages("dto");
+		builder.scanPackages("dao");
+		builder.scanPackages("daoimpl");
 		
 		return builder.buildSessionFactory();
 		

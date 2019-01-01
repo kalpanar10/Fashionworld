@@ -8,8 +8,8 @@
 		 <div class="alert alert-success alert-dismissible">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			${message}</div> 			
-<%-- 				<div class="alert alert-info fade in">${message}</div>				
- --%>			</div>
+		
+ 			</div>
 		</div>
 	</c:if>
 	
@@ -112,6 +112,7 @@
 						</div>						
 										
 					</sf:form>
+					
 					</div>
 				
 
@@ -124,6 +125,8 @@
 
 	</div>
 	
+	
+	<div class="container">
 	<div class="row">
 	<div class="col-xs-12">
 	<h3>Available Products</h3>
@@ -170,8 +173,42 @@
 		
 		</div>
 	
-	
 	</div>
 
-</div>
 	
+	</div>
+	<div class="modal fade" id="myCategoryModal" role="dialog" tabindex="-1">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span>&times;</span>
+					</button>
+					<h4 class="modal-title">New Category</h4>
+				</div>
+				<div class="modal-body">
+					<!-- Category Form -->
+					<sf:form id="categoryForm" class="form-horizontal" modelAttribute="category" action="${contextRoot}/manage/category" 
+						method="POST">
+					<div class="form-group">
+					<label class="control-label col-md-4">Category Name</label>
+					<div class="col-md-8 validate">
+						<sf:input type="text" path="name" class="form-control"
+							placeholder="Category Name" /> 
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-4">Category Description</label>
+					<div class="col-md-8 validate">
+						<sf:textarea cols="" rows="5" path="description" id="description" class="form-control"
+							placeholder="Category Name" /> 
+					</div>
+				</div>
+				<div class="form-group">
+				<div class="col-md-offset-4 col-md-8">
+				<input type="submit" value="Add Category" class="btn btn-primary"></div></div>
+						</sf:form>
+	</div>
+	</div>
+	</div>
+	</div>

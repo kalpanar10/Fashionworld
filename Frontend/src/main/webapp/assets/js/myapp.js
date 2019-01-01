@@ -209,7 +209,7 @@ if($adminproductsTable.length) {
 				           	{data: 'code',
 				           	 bSortable: false,
 				           		mRender: function(data,type,row) {
-				           			return '<img src="' + window.contextRoot + '/resources/images/' + data + '.jpg" class="dataTableImg"/>';					           			
+				           			return '<img src="' + window.contextRoot + '/resources/images/' + data + '.jpg" class="adminDataTableImg"/>';					           			
 				           		}
 				           	},
 				           	{
@@ -266,25 +266,29 @@ if($adminproductsTable.length) {
 				initComplete: function () {
 					var api = this.api();
 					api.$('.switch input[type="checkbox"]').on('change' , function() {							
-						var dText = (this.checked)? 'You want to activate the Product?': 'You want to de-activate the Product?';
-						var checked = this.checked;
 						var checkbox = $(this);
-						debugger;
+						var checked = checkbox.prop('checked');
+						var dMsg = (checked)? 'You want to activate the Product?': 'You want to de-activate the Product?';
+						
+						
+					  var value= checkbox.prop('value');
 					    bootbox.confirm({
 					    	size: 'medium',
 					    	title: 'Product Activation/Deactivation',
-					    	message: dText,
+					    	message: dMsg,
 					    	callback: function (confirmed) {
 						        if (confirmed) {
-						        	/*var activationURL= window.contextRoot +'/manage/product/' + value +'/activation';
+						        	console.log(value);
+						        	var activationUrl= window.contextRoot +'/manage/product/'+value+'/activation';
 						            $.post(activationUrl, function(data){
 						            bootbox.alert({
 						            	size:'medium',
 						            title:'Information',
-						            message:data
+						            message:'you r going to perform operation on product'+value
 						            });	
-						            });*/
-						        	$.ajax({							            	
+						            });
+						        	$.ajax({		
+						        		
 						            	type: 'GET',
 						            	url: window.contextRoot + '/manage/product/'+checkbox.prop('value')+'/activation',
 						        		timeout : 100000,
@@ -306,6 +310,36 @@ if($adminproductsTable.length) {
 						
 				}
 			});
+	var $categoryForm = $('#categoryForm');
+	if($categoryForm.length){
+		$categoryForm.validate({
+			rules:{
+				name:{
+					required : true,
+					minlength:2
+				},
+				description:{
+					required:true
+				}
+			},
+			messages:{
+				name:{
+					required: 'plesase add category name',
+					minlength:'category should not lss than 2 chracters'
+				},
+				description:{
+					required:'adddescription  for this category'
+				},
+				errorElement: 'em',
+				errorPlacement:function(error,element){
+					error.addClass('help-block');
+				error.insertAfter(element);
+				
+				}
+			}
+		});
+	}
+			
 }
 			
 			

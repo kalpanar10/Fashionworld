@@ -12,7 +12,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 public class GlobalDefaultExceptionHandler {
 
 	
-	//@ExceptionHandler(NoHandlerFoundException.class)
+	@ExceptionHandler(NoHandlerFoundException.class)
 	public ModelAndView handlerNoHandlerFoundException() {
 		
 		ModelAndView mv = new ModelAndView("error");

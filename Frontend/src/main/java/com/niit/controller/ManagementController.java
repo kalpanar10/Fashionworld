@@ -74,9 +74,9 @@ public class ManagementController {
 
 		ModelAndView mv = new ModelAndView("page");	
 		mv.addObject("title","Product Management");		
-		mv.addObject("userClickManageProduct",true);
+		mv.addObject("userClickManageProducts",true);
 		
-		// Product nProduct = new Product();		
+		Product nProduct = new Product();		
 		mv.addObject("product", productDAO.get(id));
 
 			
@@ -125,7 +125,7 @@ public class ManagementController {
 //	
 	@RequestMapping(value = "product/{id}/activation", method=RequestMethod.POST)
 	@ResponseBody
-	public String managePostProductActivation(@PathVariable int id) {		
+	public String handleProductActivation(@PathVariable int id) {		
 		Product product = productDAO.get(id);
 		boolean isActive = product.isActive();
 		product.setActive(!isActive);
@@ -147,10 +147,16 @@ public class ManagementController {
 		return categoryDAO.list();
 	}
 //	
-//	@ModelAttribute("category")
-//	public Category modelCategory() {
-//		return new Category();
-//	}
+	@ModelAttribute("category")
+	public Category getCategory() {
+		return new Category();
+	}
 //	
+	
+	@RequestMapping(value ="/category",method=RequestMethod.POST)
+	public String handleCategorySubmission(@ModelAttribute Category category) {
+		categoryDAO.add(category);
+	   return "redirect:/manage/products?operation=category";
+	}
 	
 }
