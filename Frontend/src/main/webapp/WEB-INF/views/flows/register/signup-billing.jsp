@@ -18,8 +18,8 @@
        method="POST"      
        class="form-horizontal"
        id="billingForm"
-       modelAttribute="billing"
-      >
+       modelAttribute="billing">
+      
       
        
        <div class="form-group">
@@ -72,21 +72,15 @@
        
        
        <div class="form-group">
-        <div class="col-md-offset-4 col-md-8">
-        	<!-- submit button for moving to the personal -->
-
-				<!-- submit button inside the form -->
-<button type="submit" class="btn btn-primary" name="_eventId_personal">
-previous - personal]<span class="glyphicon glyphicon-chevron-left"></span></button>
-  
-  <button type="submit" class="btn btn-primary" name="_eventId_confirm">
-next- confirm<span class="glyphicon glyphicon-chevron-left"></span></button>
-        
-
-        	<!-- submit button for moving to the confirm -->
-
-        </div>
-       </div>
+								<div class="col-md-offset-4 col-md-8">
+									<button type="submit" name="_eventId_personal" class="btn btn-primary">
+										<span class="glyphicon glyphicon-chevron-left"></span> Back - Personal
+									</button>								
+									<button type="submit" name="_eventId_confirm" class="btn btn-primary">
+										Next - Confirm<span class="glyphicon glyphicon-chevron-right"></span>
+									</button>																	 
+								</div>
+							</div>
       
       
       </sf:form>     

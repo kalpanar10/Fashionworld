@@ -10,11 +10,20 @@
      <h4>Personal Details</h4>
     </div>
     <div class="panel-body">
-     <!-- code to display the personal details -->
+    <div class="text-center">
+    
+        <h4>${registerModel.user.firstName}${registerModel.user.lastName}</h4>
+    <h5>Email:${registerModel.user.email}</h5>
+        <h5> contact number:${registerModel.user.contactNumber}</h5>
+    
+        <h5> Role:${registerModel.user.role}</h5>
+    
+    </div>
+     
     </div>
     <div class="panel-footer">
 		<!-- anchor to move to the edit of personal details -->
-		<a href="${flowExecutionUrl}&_eventId_personal" class="btn btn-primary">personal</a>
+		<a href="${flowExecutionUrl}&_eventId_personal" class="btn btn-primary">Edit</a>
    
     </div>              
    </div>
@@ -29,6 +38,15 @@
      <h4>Billing Address</h4>
     </div>
     <div class="panel-body">
+    <div class="text-center">
+    
+        <h4>${registerModel.billing.addressLineOne}</h4>
+    <h5> ${registerModel.billing.addressLineTwo}</h5>
+        <h5> ${registerModel.billing.city}-${registerModel.billing.postalCode}</h5>
+            <h5> ${registerModel.billing.state}-${registerModel.billing.country}</h5>
+    
+    
+    </div>s
 		<a href="${flowExecutionUrl}&_eventId_billing" class="btn btn-primary">edit</a>
    
 		<!-- code to display the communication address -->
@@ -50,7 +68,8 @@
    <div class="text-center">
     
     <!-- anchor to move to the success page -->
-        <a href="${flowExecutionUrl}&_eventId_success" class="btn btn-primary">conform edit</a>
+        <a href="${flowExecutionUrl}&_eventId_submit" class="btn btn-primary">confirm
+        </a>
    </div>
    
   </div>  

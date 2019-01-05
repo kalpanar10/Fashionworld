@@ -48,9 +48,9 @@ public class RegisterHandler {
 //  return transitionValue;
 // }
  
- public String saveAll(RegisterModel registerModel) {
+ public String saveAll(RegisterModel model) {
   String transitionValue = "success";
-  User user = registerModel.getUser();
+  User user = model.getUser();
   if(user.getRole().equals("USER")) {
    // create a new cart
    Cart cart = new Cart();
@@ -62,9 +62,9 @@ public class RegisterHandler {
 //  user.setPassword(passwordEncoder.encode(user.getPassword()));
 //  
 //  // save the user
-//  userDAO.add(user);
+  userDAO.addUser(user);
 //  // save the billing address
-  Address billing = registerModel.getBilling();
+ Address billing = model.getBilling();
   billing.setUserId(user.getId());
   billing.setBilling(true);  
   userDAO.addAddress(billing);

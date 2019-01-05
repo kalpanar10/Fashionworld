@@ -7,26 +7,48 @@
 <var name="user1" class="dto.User" />
 <var name="billing" class="dto.Address" />
 
+<on-start>
+<evaluate expression="registerHandler.init()" result="flowScope.registerModel"/>
+</on-start>
+
+ 
 <view-state id="personal" view="flows/register/signup-personal" model="user1" >
-<transition on="billing" to="billing"></transition>
+<transition on="billing" to="validate"/>
+ <on-exit>
+<evaluate expression="registerHandler.addUser(flowScope.registerModel,user1)"></evaluate>
+</on-exit>
 </view-state>
-<view-state id="billing" view="flows/register/signup-billing"  model="billing">
+<action-state id="validte">
+<evaluate expression="registerHandler.validateUser(user1,messageContext)"/>
+<transition on="success" to="billing"/>
+<transition on="failure" to="personl"/>
+</action-state>
+
+<view-state id="billing" view="flows/register/signup-billing" model="billing">
 <transition on="personal" to="personal"></transition>
 <transition on="confirm" to="confirm"></transition>
+
+ <on-exit>
+<evaluate expression="registerHandler.addBilling(flowScope.registerModel,billing)"></evaluate>
+</on-exit>
 </view-state>
 
-<view-state id="confirm" view="flows/register/signup-confirm" >
+<view-state id="confirm" view="flows/register/signup-confirm" model="flowScope.registerModel" >
 <transition on="personal" to="personal"></transition>
 <transition on="confirm" to="confirm"></transition>
-<transition on="billing" to="billing"></transition>
+<transition on="submit" to="submit"></transition>
 </view-state>
+<action-state id="submit">
+<evaluate expression="registerHandler.saveAll(flowScope.registerModel)"/>
+<transition on="success" to="success"/>
+</action-state>
 
 <end-state id="home" view="externalRedirect:contextRelative:/"/>
 <end-state id="success" view="flows/register/signup-success"/>
 
 <global-transitions>
-<transition on="home" to="home"></transition>
-<transition on="success" to="success"></transition>
+<transition on="home" to="home" validate="false"></transition>
+
 </global-transitions>
 
 </flow>

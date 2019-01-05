@@ -65,6 +65,7 @@
         </div>
        </div>
        
+       
        <!-- radio button using bootstrap class of radio-inline -->
 	   <div class="form-group">
 	     <label class="control-label col-md-4">Select Role</label>
