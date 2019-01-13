@@ -47,17 +47,17 @@
 			<password-encoder ref="passwordEncoder" />
 			<jdbc-user-service data-source-ref="dataSource"
 				authorities-by-username-query="select email, role from user_detail where email = ?"
-				users-by-username-query="select email, password, enabled from user_detail where email = ?" />
+				users-by-username-query="select email, password from user_detail where email = ?" />
 		</authentication-provider>
 	</authentication-manager>
  
  
 
- <!--<authentication-manager>
+<authentication-manager>
  <authentication-provider>
  <user-service>
  <user name="vicky" password="p" authorities="ROLE_USER,ROLE_ADMIN"/>
  </user-service></authentication-provider>
- </authentication-manager> -->
+ </authentication-manager> 
 
 </beans:beans>
