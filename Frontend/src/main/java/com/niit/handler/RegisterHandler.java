@@ -1,9 +1,11 @@
+
 package com.niit.handler;
 
 import javax.mail.MessageContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.niit.model.RegisterModel;
@@ -17,8 +19,8 @@ import dto.User;
 public class RegisterHandler {
 
 
-// @Autowired
-// private PasswordEncoder passwordEncoder;
+ @Autowired
+ private BCryptPasswordEncoder passwordEncoder;
 //	
 	
  @Autowired
@@ -48,6 +50,7 @@ public class RegisterHandler {
 //  return transitionValue;
 // }
  
+ 
  public String saveAll(RegisterModel model) {
   String transitionValue = "success";
   User user = model.getUser();
@@ -58,10 +61,7 @@ public class RegisterHandler {
    user.setCart(cart);
   }
    
-  // encode the password
-//  user.setPassword(passwordEncoder.encode(user.getPassword()));
-//  
-//  // save the user
+
   userDAO.addUser(user);
 //  // save the billing address
  Address billing = model.getBilling();

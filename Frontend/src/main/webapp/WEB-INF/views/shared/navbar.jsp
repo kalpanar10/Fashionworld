@@ -32,7 +32,7 @@
                 <a href="${contextRoot}/register">sign up</a>
                </li>
                <li id="Login">
-                <a href="${contextRoot}/Login">Login</a>
+                <a href="${contextRoot}/login">Login</a>
                </li>
                 </ul>
             </div>

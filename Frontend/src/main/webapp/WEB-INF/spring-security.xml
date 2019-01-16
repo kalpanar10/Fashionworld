@@ -9,55 +9,42 @@
 		http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd">
-<context:component-scan	base-package="config"></context:component-scan>
-	<context:component-scan	base-package="dao"></context:component-scan>
-	<context:component-scan	base-package="daoimpl"></context:component-scan>
-	<context:component-scan	base-package="dto"></context:component-scan>
-	
-	<beans:bean id="passwordEncoder"
-		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<context:component-scan base-package="config"></context:component-scan>
+	<context:component-scan base-package="dao"></context:component-scan>
+	<context:component-scan base-package="daoimpl"></context:component-scan>
+	<context:component-scan base-package="dto"></context:component-scan>
+<beans:bean id="passwordEncoder" class= "org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
-	<http pattern="/resources/**" security="none" />
 
- <!-- <http>
-		only admin access
-		<intercept-url pattern="/manage/**"
-			access="hasAuthority('ADMIN')" />
-		only user access (who is registered)
-		<intercept-url pattern="/cart/**"
-			access="hasAuthority('USER')" />
-		rest of the world
-		
-		
-		<intercept-url pattern="/**" access="permitAll" />
-		<form-login login-page="/login" />
-		<access-denied-handler
-			error-page="/access-denied" />
-	</http> -->
- <http>
- <intercept-url pattern="/login" access="permitAll"/>
-  <intercept-url pattern="/**" access="hasAuthority('USER')"/>
- 
- <form-login login-page="/login"/>
- <logout/>
- 
- </http>
+<http pattern="/resources/**" security="none"/>
+
+	<!-- <http> only admin access <intercept-url pattern="/manage/**" access="hasAuthority('ADMIN')" 
+		/> only user access (who is registered) <intercept-url pattern="/cart/**" 
+		access="hasAuthority('USER')" /> rest of the world <intercept-url pattern="/**" 
+		access="permitAll" /> <form-login login-page="/login" /> <access-denied-handler 
+		error-page="/access-denied" /> </http> -->
+	<http>
+	<intercept-url pattern="/manage/**"	access="hasAuthority('ADMIN')" />
+	<intercept-url pattern="/cart/**"	access="hasAuthority('USER')" />
+	<intercept-url pattern="/**"	access="permitAll" />
+			
+
+		<form-login login-page="/login"/>
+		<access-denied-handler error-page="/access-denied" />
+		<logout />
+
+	</http>
 	<authentication-manager>
 		<authentication-provider>
-			<password-encoder ref="passwordEncoder" />
+          
 			<jdbc-user-service data-source-ref="dataSource"
 				authorities-by-username-query="select email, role from user_detail where email = ?"
-				users-by-username-query="select email, password from user_detail where email = ?" />
+				users-by-username-query="select email, password,enabled from user_detail where email = ?" />
 		</authentication-provider>
 	</authentication-manager>
- 
- 
 
-<authentication-manager>
- <authentication-provider>
- <user-service>
- <user name="vicky" password="p" authorities="ROLE_USER,ROLE_ADMIN"/>
- </user-service></authentication-provider>
- </authentication-manager> 
+
+
+
 
 </beans:beans>
