@@ -69,15 +69,15 @@ public class ManagementController {
 	}
 
 	
-	@RequestMapping("/{id}/product")
+	@RequestMapping(value ="/{id}/product", method=RequestMethod.GET)
 	public ModelAndView manageProductEdit(@PathVariable int id) {		
 
 		ModelAndView mv = new ModelAndView("page");	
 		mv.addObject("title","Product Management");		
 		mv.addObject("userClickManageProducts",true);
 		
-		Product nProduct = new Product();		
-		mv.addObject("product", productDAO.get(id));
+		Product nProduct = productDAO.get(id);		
+		mv.addObject("product",nProduct);
 
 			
 		return mv;
@@ -85,7 +85,7 @@ public class ManagementController {
 	}
 	
 	
-	@RequestMapping(value = "/products", method=RequestMethod.POST)
+	@RequestMapping(value = "/product", method=RequestMethod.POST)
 	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct,BindingResult results, Model model, HttpServletRequest request) {
 		
 		// mandatory file upload check
@@ -119,7 +119,7 @@ public class ManagementController {
 			 FileUploadUtitlity.uploadFile(request, mProduct.getFile(), mProduct.getCode()); 
 		 }
 		
-		return "redirect:/manage/products?operation=product";
+		return "redirect:/manage/products?success=product";
 	}
 
 //	

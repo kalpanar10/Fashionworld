@@ -1,18 +1,33 @@
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container">
 
-	<c:if test="${not empty message}">	
 		<div class="row">			
-			<div class="col-xs-12 col-md-offset-2 col-md-8">
-		 <div class="alert alert-success alert-dismissible">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			${message}</div> 			
-		
- 			</div>
-		</div>
-	</c:if>
-	
+			<c:if test="${not empty message}">
+
+			<c:choose>
+
+				<c:when test="${message eq 'Product Submission Successfull!'}">
+					<div class="col-xs-12">
+						<div class="alert alert-success alert-dismissible">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							${message}
+						</div>
+					</div>
+				</c:when>
+
+				<c:otherwise>
+					<div class="col-xs-12">
+						<div class="alert alert-warning alert-dismissible">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							${message}
+						</div>
+					</div>
+				</c:otherwise>
+			</c:choose>
+
+		</c:if>
+			
 
 	<div class="row">
 
@@ -27,7 +42,7 @@
 				</div>
 
 				<div class="panel-body">
-					<sf:form class="form-horizontal" modelAttribute="product" action="${contextRoot}/manage/products" method="POST" enctype="multipart/form-data">
+					<sf:form class="form-horizontal" modelAttribute="product" action="${contextRoot}/manage/product" method="POST" enctype="multipart/form-data">
 						<div class="form-group">
 							<label class="control-label col-md-4" for="name"> Enter product Name</label>
 							<div class="col-md-8">
