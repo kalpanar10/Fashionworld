@@ -8,7 +8,13 @@
 		
 		<div class="col-md-9">
 
+<ol class="breadcrumb">
 
+<li><a href="${contextRoot}/home">HOME</a></li>
+<li class="active">Category</li>
+<li class="active">${category.name}</li>
+
+</ol>
 
 			<table id="productListTable" class="table table-striped table-borderd">
 					
@@ -68,13 +74,7 @@ window.categoryId = '';
 <script>
 window.categoryId = '${category.id}';
 </script>
-<ol class="breadcrumb">
 
-<li><a href="${contextRoot}/home">HOME</a></li>
-<li class="active">Category</li>
-<li class="active">${category.name}</li>
-
-</ol>
 </c:if>
 </div>
 </div>

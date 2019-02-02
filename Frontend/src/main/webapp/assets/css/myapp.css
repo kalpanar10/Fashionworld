@@ -207,6 +207,13 @@ input:checked + .slider:before {
 	width: auto;
 	height : 180px;
 }
+#prop {
+
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+    display: flex;
+}
 
 
 .se-pre-con{

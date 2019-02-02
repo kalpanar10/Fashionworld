@@ -46,14 +46,14 @@
             <h5> ${registerModel.billing.state}-${registerModel.billing.country}</h5>
     
     
-    </div>s
-		<a href="${flowExecutionUrl}&_eventId_billing" class="btn btn-primary">edit</a>
-   
+    </div>
+		
 		<!-- code to display the communication address -->
     </div>
     <div class="panel-footer">
 		<!-- anchor to move to the edit of address -->
-
+<a href="${flowExecutionUrl}&_eventId_billing" class="btn btn-primary">edit</a>
+   
     </div>       
    </div>  
   
